@@ -128,4 +128,7 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-demo\robotframework\robotframework-demo\test_results
+/test_results/*
+*.html
+*.xml
+*.png
