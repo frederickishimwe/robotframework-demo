@@ -67,8 +67,8 @@ if __name__ == "__main__":
             data in dictionary format
     '''
     parser = argparse.ArgumentParser()
-    parser.add_argument('--env', default='../configs/env/ppe.json', help='Environment to be used')    
-    parser.add_argument('--user', default= '../configs/users/frederick.json' , help='user to login with')
+    parser.add_argument('--env', default='../test_data/environments/staging.json', help='Environment to be used')    
+    parser.add_argument('--user', default= '../test_data/config/users/test_user.json' , help='user to login with')
 
     args = parser.parse_args()
     
