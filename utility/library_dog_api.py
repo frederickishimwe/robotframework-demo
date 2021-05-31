@@ -2,14 +2,12 @@
 import json, ast,datetime,argparse, time
 import requests,urllib3, random
 from  .oauth2_test import  auth,set_env_flag,get_bearer_token
-from .common_utility.py import Util
+from .common_utility import Util
 from .publish_subscribe import Api
 
 class DogCommandQueryHost():
 	''' This class publishes a json object via rest post  '''
 	def __init__(self,env,config_path='../configs'):
-		# self.start = datetime.datetime.now()
-		init(autoreset=True)
 		urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
 		self.environment =env
 		self.SetUp()
@@ -17,11 +15,11 @@ class DogCommandQueryHost():
 	def SetUp(self):
 		self.utility = Util() 
 		self.send_request= Api()
-		self.environment_config = self.utility.get_test_data_json(self.environment)
+		self.environment_config = self.utility.get_test_data_json(f"/environments/{self.environment}")
 		self.api_client_ = self.utility.get_test_data_json(f"/config/client_account_{self.environment}")
 
 		print('\n\n Environment: ',self.environment_config)
-		self.endpoints = self.utility.get_test_data_json('endpoints')
+		self.endpoints = self.utility.get_test_data_json(f"/environments/endpoints")
 		self.dogbreed_endpoint= self.endpoints['dog_breed']
 		self.pet_urls= self.environment_config['dog_api']
 
@@ -41,7 +39,7 @@ class DogCommandQueryHost():
 
 	def get_dog_breedlist(self):
 		url="{0}/{1}".format(self.pet_urls['pet_url'],self.dogbreed_endpoint['breed_list'])
-		return self.send_request.query("GET",url,'', headers=self.get_headers('no-auth'))
+		return self.send_request.query(url,'', headers=self.get_headers('no-auth'))
 
 
 if  __name__ == "__main__":

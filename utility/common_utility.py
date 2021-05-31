@@ -122,7 +122,7 @@ class Util():
         return self.get_json_data('{0}/test_data/{1}.json'.format(self.config_path,filename))
 
     def get_test_data_json(self, filename):
-        return self.get_json_data('{0}/test_data/{1}.json'.format(self.config_path,filename))
+        return self.get_json_data('{0}/{1}.json'.format(self.config_path,filename))
 
     def get_endpoints_json(self, endpoints):
         return self.get_json_data('{0}/{1}.json'.format(self.config_path,endpoints))
