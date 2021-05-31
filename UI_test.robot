@@ -66,18 +66,23 @@ Ensure that 4 retrievers returned
 *** Test Cases ***
 
 Open Amazon & Careers
+    [Tags]   Ui     api
     Open Browser To Amazon
 The title is now
+    [Tags]   Ui     api
     Log Title
 Inspect that you on the right page
+    [Tags]   Ui     api
     Amazon Page Should Be Open
 
 Check the careers page
+    [Tags]   Ui     api
+
     Go To       https://www.amazon.jobs/
     Location Should Be      https://www.amazon.jobs/en/
 
 ApiTest: Get Dog Breed List
-    [Tags]      dog
+    [Tags]   Ui     api
     ${results}=     dog_api.get_dog_breedlist
     Validate Response with description  ${results}   Get Dog Breeding List Failed
     Log   ${results.json()}
@@ -86,4 +91,5 @@ ApiTest: Get Dog Breed List
 
 
 End Test
+    [Tags]   Ui   
     Close Browser
