@@ -1,0 +1,8 @@
+{
+    "front-end-client": {
+    "client_id_jwt": "",
+    "client_secrete_jwt": "",
+    "auth_url":"",
+    "scope":["openapi",".."]
+  }
+}

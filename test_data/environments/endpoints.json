@@ -1,0 +1,13 @@
+{
+    "dog_api":{
+        "all_dogs":"/doggos",
+        "dog_any_media":"/woof",
+        "dog_filter_image":"/woof?filter=mp4,webm",
+        "get_dog":"/{0}"
+    },
+    "dog_breed":{
+        "breed_list":"api/breeds/list/all",
+        "random_images":"api/breed/retriever/images/random"
+
+    }
+}
