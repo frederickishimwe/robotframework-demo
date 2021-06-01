@@ -1,0 +1,14 @@
+{
+    "dog_api":{
+        "random_dog_url":"https://random.dog",
+        "pet_url":"https://dog.ceo",
+        "other_pets_url":"https://random.dog"
+  
+    },
+    "front-end-client": {
+        "client_id_jwt": "",
+        "client_secrete_jwt": "",
+        "auth_url":"",
+        "scope":["openapi",".."]
+      }
+  }
