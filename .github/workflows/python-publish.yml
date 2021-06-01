@@ -30,7 +30,7 @@ jobs:
       run: |
         python setup.py sdist bdist_wheel
         twine upload dist/*
-    - name: run robot
+    - name: run robot with selenium
       run: robot -d test_results .\UI_test.robot
       
       
