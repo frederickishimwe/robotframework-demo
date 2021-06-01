@@ -1,6 +1,6 @@
 # This is a basic workflow that is manually triggered
 
-name: Manual workflow
+name: Manual Robot Test Run
 
 # Controls when the action will run. Workflow runs when manually triggered using the UI
 # or API.
@@ -35,9 +35,10 @@ jobs:
         python -m pip install --upgrade pip
         pip install setuptools wheel twine
         pip install -r requirements
-    - name: Build and publish
-      env:
-        TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
-        TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
+    - name: Run robot UI test
+      # env:
+        # TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
+        # TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        robot -d test_results .\UI_test.robot
+        ls
+        robot -d test_results  UI_test.robot
