@@ -28,9 +28,9 @@ jobs:
         TWINE_USERNAME: ${{ secrets.PYPI_USERNAME }}
         TWINE_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
       run: |
-        python setup.py sdist bdist_wheel
-        twine upload dist/*
-    - name: run robot with selenium
-      run: robot -d test_results .\UI_test.robot
+        robot -d test_results .\UI_test.robot
+        
+    # - name: run robot with selenium
+    #   run: robot -d test_results .\UI_test.robot
       
       
