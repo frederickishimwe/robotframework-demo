@@ -6,12 +6,12 @@ ${BROWSER}=     chrome
 ${DELAY}=       2s
 @{CHROME_OPTIONS}     --headless  --start-maximized   --disable-gpu   --no-sandbox --window-size\=1366,768    --remote-debugging-port=9222
 #https://www.theverge.com/   chrome
+# &{credentials}=    username=admin    password=admin
 
 *** Settings ***
 Library         SeleniumLibrary
 Library         dog_test_api.py
 Library         dog_test_api.DogCommandQueryHost   ${ENV}       WITH NAME  dog_api
-
 
 *** Keywords ***
 Open Browser To Amazon
@@ -65,21 +65,31 @@ Ensure that 4 retrievers returned
 
 *** Test Cases ***
 
-Open Amazon & Careers
+Open site using basic auth
     [Tags]   Ui     
-    Open Browser To Amazon
-The title is now
-    [Tags]   Ui     
-    Log Title
-Inspect that you on the right page
-    [Tags]   Ui     
-    Amazon Page Should Be Open
+    ${url}=     set variable    https://the-internet.herokuapp.com/basic_auth
+    Open Browser    ${url}        ${BROWSER}
+    Maximize Browser Window
+    basic_auth      ${ENV}
+    Wait Until Page Contains     Congratulations! You must have the proper credentials.   timeout=15
+    Capture Page Screenshot     test_results/Congratulations.png
+    Close Browser
 
-Check the careers page
-    [Tags]   Ui     
+# Open Amazon & Careers
+#     [Tags]   Ui     
+#     Open Browser To Amazon
+# The title is now
+#     [Tags]   Ui     
+#     Log Title
+# Inspect that you on the right page
+#     [Tags]   Ui     
+#     Amazon Page Should Be Open
 
-    Go To       https://www.amazon.jobs/
-    Location Should Be      https://www.amazon.jobs/en/
+# Check the careers page
+#     [Tags]   Ui     
+
+#     Go To       https://www.amazon.jobs/
+#     Location Should Be      https://www.amazon.jobs/en/
 
 ApiTest: Get Dog Breed List
     [Tags]   Ui     api
@@ -94,6 +104,6 @@ ApiTest: Ensure that 4 retriver dogs are returned
     Ensure that 4 retrievers returned   ${results} 
 
 
-End Test
-    [Tags]   Ui   
-    Close Browser
+# End Test
+#     [Tags]   Ui   
+#     Close Browser

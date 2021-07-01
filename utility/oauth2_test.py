@@ -60,6 +60,11 @@ def get_json_from_file(filename):
     file = open(filename)
     return json.load(file)
 
+
+def get_basic_auth_credentials(env_):
+    credentials =get_json_from_file(f'test_data/environments/{env_}.json')['basic_auth']
+    return credentials
+
 if __name__ == "__main__":
     ''' Read in arguements e.g. json file
         required files:
